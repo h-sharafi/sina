@@ -1,0 +1,19 @@
+@model Tuple<List<FileCategory>, short, string>
+
+
+<ul class="list-group" style="margin-right: 20px; margin-top: 10px;">
+    @foreach (var fc in Model.Item1)
+    {
+        <li class="list-group-item" style="    margin-top: 4px;border-radius: 3px;">
+            <span><button class="btn @(fc.Id == Model.Item2 ? "btn-success":"btn-outline-success") @(Model.Item3)" data-id="@fc.Id" id="sfc@(fc.Id)"><span>@(fc.Name)</span></button></span>
+            @if (fc.Children != null && fc.Children.Count > 0)
+            {
+                <span><button class="btn btn-outline-info showToggle" id="tbn@(fc.Id)" data-show="false" data-id="@(fc.Id)"><i class="fa fa-chevron-down" aria-hidden="true"></i></button></span>
+                <div class="showToggleDiv d-none" id="showdiv@(fc.Id)">
+                    <vc:select-file-category-childeren select-file-category-cls="@Model.Item3" selected-id="@Model.Item2" file-categorys="@(fc.Children.ToList())" ></vc:select-file-category-childeren>
+                </div>
+            }
+        </li>
+    }
+
+</ul>

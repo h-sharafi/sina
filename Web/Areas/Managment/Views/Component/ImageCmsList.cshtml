@@ -1,0 +1,55 @@
+@model List<ImageCms>
+
+@{
+    ViewData["Title"] = "ImageCmsList";
+    int index = 0;
+}
+
+
+<div style="padding: 11px 72px;">
+    <a asp-action="CreateImageCms" class="btn btn-outline-info" >ایجاد سی ام اس جدید</a>
+</div>
+<div class="container" style="padding-top: 40px">
+    @if (Model.Count > 0)
+    {
+        <table class="table table-bordered text-center bg-white" style="vertical-align: middle">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:10%">ردیف</th>
+                    <th scope="col">نام</th>
+                    <th scope="col" style="width:40%">صدا</th>
+                    <th scope="col" style="width:30%">عملیات</th>
+
+                </tr>
+            </thead>
+            <tbody style="vertical-align: middle">
+                @foreach (var image in Model)
+                {
+                    <tr id="listTr@(image.Id)">
+                        <td class="va-middle">@(++index)</td>
+                      <td class="va-middle">@(image.Name)</td>
+                      <td class="va-middle"><img src="~/UplodedFiles/@(image.File.FileName)" style="width: 70px;height: 70px" /></td>
+                      <td class="va-middle">
+                          <p style="display:inline-block;margin: 10px;display:none" id="p@(image.Id)">[image{id:@(image.Id):,fileId:@(image.FileId):,imageCmsType:0:}]</p>
+                            <a class="btn btn-outline-success" asp-action="CreateImageCms" asp-route-id="@(image.Id)"><span>ویرایش</span><span><i style="margin-right:3px" class="fa fa-edit"></i></span></a>
+                            <button class="btn btn-outline-danger deleteImage" data-id="@(image.Id)"><span>حذف</span><span><i style="margin-right:3px" class="fa fa-trash"></i></span></button>
+                            <button class="btn btn-outline-info copyAudio" data-id="@(image.Id)"><span>کپی</span><span><i style="margin-right:3px" class="fa fa-copy"></i></span></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/Managment/ImageCms.js"></script>
+}
+@section Styles{
+    <style>
+        .va-middle{
+            vertical-align: middle !important;
+        }
+    </style>
+}

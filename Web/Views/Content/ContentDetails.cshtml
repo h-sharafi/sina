@@ -1,0 +1,143 @@
+﻿@model Domain.Content
+
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="single-blog-wrap-layout1">
+    <div class="single-blog-banner-layout1">
+        <div class="banner-img">
+            <img src="~/UplodedFiles/@(Model.CoverImage.FileName)" alt="blog">
+        </div>
+        <div class="banner-content">
+            <div class="container">
+                <ul class="entry-meta meta-color-light2">
+                    <li><i class="fas fa-tag"></i>@(Model.ContentType.Name)</li>
+                    <li><i class="fas fa-calendar-alt"></i>@(Model.CreationTime.ToPersianDateString())</li>
+                    <li><i class="fas fa-user"></i>توسط <a href="#">@(Model.CreationUser.DisplayName)</a></li>
+                </ul>
+                <h2 class="item-title">@(Model.Title)</h2>
+                <ul class="item-social">
+                    @*<li><a href="#" class="facebook"><i class="fab fa-facebook-f"></i>اشتراک</a></li>
+                        <li><a href="#" class="twitter"><i class="fab fa-twitter"></i>اشتراک</a></li>
+                        <li><a href="#" class="g-plus"><i class="fab fa-google-plus-g"></i>اشتراک</a></li>
+                        <li><a href="#" class="pinterst"><i class="fab fa-pinterest"></i>پین آن</a></li>
+                        <li><a href="#" class="load-more"><i class="fas fa-plus"></i>بیشتر</a></li>*@
+                </ul>
+                <ul class="response-area">
+                    <li><a href="#"><i class="far fa-comment"></i>@(Model.Comments.Count)</a></li>
+                    <li><a href="#"><i class="far fa-eye"></i>@(Model.TotalSeen)</a></li>
+                    @*<li><a href="#"><i class="far fa-heart"></i>225</a></li>
+                        <li><a href="#"><i class="fas fa-share"></i>302</a></li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row gutters-50">
+            <div class="col-lg-8">
+                <div class="single-blog-box-layout1">
+                    <div class="blog-details">
+                        @Html.Raw(Model.Text)
+                    </div>
+                    @*<div class="blog-entry-meta">
+                <ul>
+                    <li class="item-tag">
+                        <i class="fas fa-bookmark"></i>
+                        <a href="#">کاوش,</a>
+                        <a href="#">سفر,</a>
+                        <a href="#">تعطیلات,</a>
+                    </li>
+                    <li class="item-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </li>
+                    <li class="item-respons"><i class="fas fa-heart"></i>1,230</li>
+                </ul>*@
+                    @*</div>*@
+                    @if (Model.CreationUser?.Team != null)
+                    {
+                        <div class="blog-author">
+                            <div class="media media-none--xs">
+                                @if (Model.CreationUser?.Team?.ProfileImage != null)
+                                {
+                                    <img src="~/UplodedFiles/@(Model.CreationUser.Team.ProfileImage.FileName)" alt="@(Model.CreationUser.DisplayName)" class="media-img-auto" style="width: 120px">
+                                }
+                                <div class="media-body">
+                                    <h4 class="item-title">@(Model.CreationUser.DisplayName)</h4>
+                                    <div class="item-subtitle">@(Model.ContentType.Name)</div>
+                                    <p>@(Model.CreationUser.Team.BreifKnowledge)</p>
+                                    <vc:content-details-social-network team-id="@(Model.CreationUser.Team.Id)"></vc:content-details-social-network>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <vc:near-conetnt id="@(Model.ContentTypeId)"></vc:near-conetnt>
+                    <div class="blog-comment">
+                        <div class="section-heading-4 heading-dark">
+                            <h3 class="item-heading">02 نظر</h3>
+                        </div>
+                        <div class="media media-none--xs">
+                            <img src="img/blog/blog216.jpg" alt="Blog Comments" class="img-fluid media-img-auto">
+                            <div class="media-body">
+                                <h4 class="item-title">آرش خادملو</h4>
+                                <div class="item-subtitle">2 دقیقه پیش</div>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
+                                <a href="#" class="item-btn">پاسخ</a>
+                            </div>
+                        </div>
+                        <div class="media media-none--xs">
+                            <img src="img/blog/blog217.jpg" alt="Blog Comments" class="img-fluid media-img-auto">
+                            <div class="media-body">
+                                <h4 class="item-title">آرش خادملو</h4>
+                                <div class="item-subtitle">2 دقیقه پیش</div>
+                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
+                                <a href="#" class="item-btn">پاسخ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-form">
+                        <div class="section-heading-4 heading-dark">
+                            <h3 class="item-heading">نوشتن یک نظر</h3>
+                        </div>
+                        <form class="contact-form-box">
+                            <div class="row gutters-15">
+                                <div class="col-md-4 form-group">
+                                    <input type="text" placeholder="نام*" class="form-control" name="first_name" data-error="Name field is required" required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input type="email" placeholder="ایمیل*" class="form-control" name="email" data-error="E-mail field is required" required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input type="text" placeholder="وبسایت*" class="form-control" name="website" data-error="website field is required" required="">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <textarea placeholder="نظرات خود را بنویسید ..." class="textarea form-control" name="message" rows="8" cols="20" data-error="Message field is required" required=""></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <button class="item-btn">ارسال نظر</button>
+                                </div>
+                            </div>
+                            <div class="form-response"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
+                <vc:home-page-social-network></vc:home-page-social-network>
+                <vc:popular-posts></vc:popular-posts>
+                <vc:home-content-category></vc:home-content-category>
+
+            </div>
+        </div>
+    </div>
+</section>

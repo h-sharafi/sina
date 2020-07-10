@@ -1,0 +1,79 @@
+@model SideBarViewModel
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 608.4px;">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+        @if (Model?.SiteSetting != null && Model.SiteSetting?.SiteLogo != null)
+        {
+            <img src="~/UplodedFiles/@(Model.SiteSetting.SiteLogo.FileName)" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        }
+        <span class="brand-text font-weight-light">پنل مدیریت</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar" style="direction: ltr">
+        <div style="direction: rtl">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    @if (Model.User?.Team?.ProfileImage != null)
+                    {
+                        <img src="~/UplodedFiles/@(Model.User.Team.ProfileImage.FileName)" class="img-circle elevation-2" alt="@Model.User.DisplayName">
+                    }
+
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">@Model.User.DisplayName</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    @foreach (var sideBar in Model.SideBars)
+                    {
+                        var actionDatas = sideBar.ActionsList.Where(ac => !ac.IsDontSideBarShow && !ac.RequiresHttpPost).ToList();
+                        if (actionDatas.Count > 0)
+                        {
+                            <li class="nav-item has-treeview @(Model.Menu == sideBar.ControllerName ? "menu-open" : "")">
+                                <a href="#" class="nav-link @(Model.Menu == sideBar.ControllerName ? "active" : "")">
+                                    <i class="nav-icon @sideBar.ControllerIcon"></i>
+                                    <p>
+                                        @sideBar.ControllerNameLocalized
+                                        <i class="right fa fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    @foreach (var item in actionDatas)
+                                    {
+                                        <li class="nav-item">
+                                            @*<a href="@(item.Url != null ?item.Url :$"Managment/{sideBar.ControllerName}/{item.ActionName}" )" class="nav-link @(item.ActionName == Model.SubMenu ? "active" : "")">
+                                                    <i class="@item.ActionIcon nav-icon"></i>
+                                                    <p>@item.ActionNameLocalized</p>
+                                                </a>*@
+
+                                            <a asp-area="managment" asp-controller="@sideBar.ControllerName" asp-action="@item.ActionName" class="nav-link @(item.ActionName == Model.SubMenu ? "active" : "")">
+                                                <i class="@item.ActionIcon nav-icon"></i>
+                                                <p>@item.ActionNameLocalized</p>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        @* else
+                            {
+                                <li class="nav-item @(Model.Menu == sideBar.Name ? "active" : "")">
+                                    <a href="@(sideBar.Url)" class="nav-link">
+                                        <i class="nav-icon fa fa-calendar"></i>
+                                        <p>@sideBar.Name</p>
+                                    </a>
+                                </li>
+                            }                                                    *@
+                    }
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+    </div>
+    <!-- /.sidebar -->
+</aside>

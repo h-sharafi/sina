@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <vc:heade-tags page-place="@(ViewBag.Title)"></vc:heade-tags>
+    <script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather+Sans:300,400,700,800%7CAsap:400,700%7CDroid+Sans:400,700">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .ie-panel {
+            display: none;
+            background: #212121;
+            padding: 10px 0;
+            box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3);
+            clear: both;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        html.ie-10 .ie-panel,
+        html.lt-ie-10 .ie-panel {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ie-panel">
+        <a href="https://windows.microsoft.com/en-US/internet-explorer/"><img src="./images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a>
+    </div>
+    <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
+            <p>شکیبا باشید ...</p>
+        </div>
+    </div>
+    <div id="wrapper" class="wrapper">
+        <!-- Add your site or application content here -->
+        <!-- Header Area Start Here -->
+        <vc:header></vc:header>
+        @RenderBody()
+     <!-- Divider-->
+        <!-- Divider-->
+        <section class="section">
+            <div class="container">
+                <hr/>
+            </div>
+        </section>
+
+
+        <footer class="section footer bg-default">
+            <div class="container">
+                <div class="row row-15 align-items-center">
+                    <div class="col-lg-6">
+                        <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span><span>&nbsp;</span><span>Saving Violet</span><span>. All Rights Reserved.</span></p>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-link-wrap">
+                            <ul class="social-list">
+                                <li>
+                                    <a class="social-icon button-facebook novi-icon fa fa-facebook-f" href="#"></a>
+                                </li>
+                                <li>
+                                    <a class="social-icon button-twitter novi-icon fa fa-twitter" href="#"></a>
+                                </li>
+                                <li>
+                                    <a class="social-icon button-rss novi-icon fa fa-rss" href="#"></a>
+                                </li>
+                            </ul>
+                            <ul class="footer-nav">
+                                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Sitemap</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="./js/core.min.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

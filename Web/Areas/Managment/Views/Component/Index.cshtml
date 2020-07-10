@@ -1,0 +1,59 @@
+﻿@model Tuple<List<AudioCms>, List<Slider>, List<ImageCms>>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+}
+
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row" style="padding-top: 2rem; text-align: center">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info" style="text-align: right">
+                        <div class="inner">
+                            <h3>@(Model.Item1.Count)</h3>
+
+                            <p>کامپوننت های صوتی</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-file-audio"></i>
+                        </div>
+                        <a asp-action="AudioCmsList" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success" style="text-align: right">
+                        <div class="inner">
+                            <h3>@(Model.Item2.Count)</h3>
+
+                            <p>کامپوننت های اسلایدر</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-slideshare"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning" style="text-align: right">
+                        <div class="inner">
+                            <h3>@(Model.Item3.Count)</h3>
+
+                            <p>کامپوننت های تصویری</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-image"></i>
+                        </div>
+                        <a asp-action="ImageCmsList" class="small-box-footer">اطلاعات بیشتر <i class="fa fa-arrow-circle-left"></i></a>
+                    </div>
+                </div>
+
+            </div>
+           
+        </div><!-- /.container-fluid -->
+    </section>

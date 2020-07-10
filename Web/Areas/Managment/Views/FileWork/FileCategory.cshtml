@@ -1,0 +1,18 @@
+﻿@model List<Domain.FileCategory>
+
+@{
+    ViewData["Title"] = "FileCategory";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_FileWorkHeader" />
+
+<button class="btn btn-outline-success" style="margin: 20px 69px;" id="CreateCategory">ایجاد دسته بندی</button>
+<div class="container" id="fcId">
+    <vc:file-category filecategorys="@Model"></vc:file-category>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Managment/fileCategory.js"></script>
+
+}

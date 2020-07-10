@@ -1,0 +1,33 @@
+﻿@model Domain.SocialNetwork
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Default" id="creatSocialFormId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="SiteSettingId" type="hidden" class="form-control" />
+            <input asp-for="TeamId" type="hidden" class="form-control" />
+            <input asp-for="Id" id="SocialNetworkId" type="hidden" class="form-control" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" id="SocialNetName" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FaClass" class="control-label"></label>
+                <input asp-for="FaClass" class="form-control" />
+                <span asp-validation-for="FaClass" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                @*<input type="submit" id="createSocialSubmitId" value="@(Model.Id== 0 ? "ساخت" : "ویرایش")" class="btn btn-primary" />*@
+            </div>
+        </form>
+    </div>
+</div>

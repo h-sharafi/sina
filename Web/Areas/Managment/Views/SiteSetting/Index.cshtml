@@ -1,0 +1,142 @@
+﻿@model SiteSettingViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+    var siteLogo = Model.SiteLogo;
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header header-s">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>ویرایشگر متن</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-left">
+                    <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                    <li class="breadcrumb-item active">ویرایشگر متن</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<div id="root"></div>
+<!-- Main content -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6" style="padding: 10px">
+            <div class="card card-primary ">
+                <div class="card-header">
+                    <h3 class="card-title">ویرایش تنظیمات سایت</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="SiteLogoId" value="@(Model?.SiteLogo!= null ? Model.SiteLogo.Id : 0)" />
+                    <input type="hidden" asp-for="FooterLogoId" value="@(Model?.FooterLogo!= null ? Model.FooterLogo.Id : 0)" />
+                    <input type="hidden" asp-for="FavIconId" value="@(Model?.FavIcon!= null ? Model.FavIcon.Id : 0)" />
+                    <input type="hidden" id="typeId" value="0" />
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label asp-for="@Model.Name">نام وبسایت</label>
+                            <input class="form-control" placeholder="نام سایت را وارد کنید" asp-for="@Model.Name">
+                            <span asp-validation-for="@Model.Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Title">عنوان وبسایت</label>
+                            <input class="form-control" placeholder="عنوان سایت را وارد کنید" asp-for="@Model.Title">
+                            <span asp-validation-for="@Model.Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.RightConditionText">حقوق وبسایت</label>
+                            <input class="form-control" placeholder="حقوق سایت" asp-for="@Model.RightConditionText">
+                            <span asp-validation-for="@Model.Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Description">توضیحات وبسایت</label>
+                            <input class="form-control" id="NameId" placeholder="توضیحات سایت را وارد کنید" asp-for="@Model.Description">
+                            <span asp-validation-for="@Model.Description"></span>
+                        </div>
+                        <div class="form-group" style="background: #e3e3e3;  padding: 10px;">
+                            <label>لوگوی سایت </label>
+                            <div class="row" style="border: 0px dashed" id="selectLogobtnId">
+                                <vc:select-logo file="@(Model?.SiteLogo)" file-id="0" type-id="selectLogobtnId"></vc:select-logo>
+                            </div>
+                        </div>
+                        <div class="form-group" style="background: #e3e3e3;  padding: 10px;">
+                            <label>لوگوی فوتر سایت </label>
+                            <div class="row" style="border: 0px dashed" id="selectFooterLogobtnId">
+                                <vc:select-logo file="@(Model?.FooterLogo)" file-id="0" type-id="selectFooterLogobtnId"></vc:select-logo>
+                            </div>
+                        </div>
+                        <div class="form-group" style="background: #e3e3e3;  padding: 10px;">
+                            <label>فو ایکون سایت </label>
+                            <div class="row" style="border: 0px dashed" id="faviconbtnId">
+                                <vc:select-logo file="@(Model?.FavIcon)" file-id="0" type-id="selectFaviconbtnId"></vc:select-logo>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.FooterText">متن پاورقی</label>
+                            <textarea asp-for="FooterText" style="resize:vertical" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">ارسال</button>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+        <div class="col-md-6" style="padding: 10px" >
+            <div id="socialPlaceId">
+                <vc:social-network team-id="null"></vc:social-network>
+            </div>
+            <br />
+            <div id="mainSliderPlc" class="mainSlider">
+                <vc:main-slider></vc:main-slider>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/Scripts/Managment/selectFile.js"></script>
+    <script src="~/Scripts/Managment/socialNetwork.js"></script>
+}
+@section Styles {
+    <link href="~/build/static/css/main.d1b05096.chunk.css" rel="stylesheet">
+    <style>
+        .m-w-100 {
+            max-width: 100%;
+        }
+
+        .audioText {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #fafafa;
+            border-radius: 9px;
+            border-radius: 9px;
+        }
+
+        .sliderFileRow {
+            padding: 12px 4px;
+            background: #e9e9e9;
+            margin: 4px 2px;
+            border-radius: 3px;
+        }
+
+        .mainSlider {
+            padding: 2px;
+            background: #eff4f6e0;
+            border-radius: 4px;
+        }
+    </style>
+}

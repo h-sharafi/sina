@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Domain.SocialNetwork>
+    <div class="col-lg-4">
+        <div class="footer-box-layout1">
+            <ul class="footer-social">
+                @foreach (var sn in Model)
+                {
+                    <li><a href="@(sn.Address)"><i class="@(sn.FaClass)"></i></a></li>
+                }
+
+            </ul>
+        </div>
+    </div>

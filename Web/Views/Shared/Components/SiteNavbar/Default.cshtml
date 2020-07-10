@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ContentType>
+@inject Application.Service.ISiteSettingService siteSetting
+@using  Microsoft.EntityFrameworkCore
+@{
+    var siteSettingModel =  siteSetting.GetAll().Include(ss => ss.SiteLogo).FirstOrDefault();
+}
+<div id="header-menu" class="header-menu menu-layout1 box-layout-child bg--light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav id="dropdown" class="template-main-menu">
+                    
+                    <ul>
+                        @foreach (var item in Model.Where(m => !m.IsMainPage))
+                        {
+                            <li>
+                                <a href="/ContentType/@(item.Id)/@(item.Name.Replace(" ","-"))">@(item.Name)</a>
+                            </li>
+                        }
+                        @if (Model.Any(m => m.IsMainPage))
+                        {
+                            <li>
+                                <a href="#">صفحات</a>
+                                <ul class="dropdown-menu-col-1">
+                                    @foreach (var item in Model.Where(m => m.IsMainPage))
+                                    {
+                                        <li>
+                                            <a href="/ContentType/@(item.Id)/@(item.Name.Replace(" ","-"))">@(item.Name)</a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

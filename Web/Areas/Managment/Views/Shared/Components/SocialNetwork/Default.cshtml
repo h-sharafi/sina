@@ -1,0 +1,47 @@
+﻿@model Tuple<List<SocialNetwork>, short?>
+@*TeamId*@
+
+<button class="btn btn-outline-primary " style="margin-bottom: 20px" id="createScoialNetworkId" data-id="@(Model.Item2)"> ساخت</button>
+<div>
+    @if (Model.Item1.Count > 0)
+    {
+        <table class="table" style="text-align: center;">
+            <thead>
+                <tr>
+                    <th>
+                        ایکون
+                    </th>
+                    <th>
+                        نام
+                    </th>
+                    <th>کارکردها</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item1)
+                {
+                    <tr>
+                        <td><i class="@(item.FaClass)"></i></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>*@
+                    <td>
+                     
+                        <button class="btn btn-outline-info editSocialNetwork" data-id="@(item.Id)" data-teamid="@Model.Item2"><span>ویرایش</span><span><i style="margin-right:3px" class="fa fa-edit"></i></span></button>
+                        <button class="btn btn-outline-@(item.IsActive? "danger" : "success") activeSocialNetwork" data-Id="@(item.Id)" data-teamid="@Model.Item2">   <span>@(item.IsActive ? "غیره فعال" : "فعال")</span><span><i style="margin-right: 3px" class="fa fa-eye@(item.IsActive ? "-slash" : "")"></i></span></button>
+                        <button class="btn btn-outline-warning deleteSocialNetwork" data-id="@(item.Id)" data-teamid="@Model.Item2"><span>حذف</span><span><i style="margin-right:3px" class="fa fa-trash"></i></span></button>
+
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="alert alert-info">شما تاکنون شبکه اجتماعی ای تعریف نکردین</p>
+    }
+</div>

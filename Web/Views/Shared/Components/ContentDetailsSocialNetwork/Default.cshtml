@@ -1,0 +1,12 @@
+﻿@model Team
+
+@if (Model?.SocialNetworks != null &&  Model.SocialNetworks.Any())
+{
+    <ul class="item-social">
+        @foreach (var sn in Model.SocialNetworks)
+        {
+            <li><a href="@sn.Address"><i class="@(sn.FaClass)"></i></a></li>
+        }
+
+    </ul>
+}

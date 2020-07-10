@@ -1,0 +1,30 @@
+.header-s {
+    padding: 1rem 3rem;
+    background: #fff;
+}
+
+
+/* Site Setting  */
+
+.form-dis {
+    padding: 4rem 5rem !important;
+}
+
+.uploadDiv {
+    padding: 1rem 1rem;
+    margin: 1rem 1rem;
+    background: #fafafa;
+}
+
+.d-none {
+    display: none;
+}
+
+.contentTypeSideBar-btn {
+    min-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/*create content*/

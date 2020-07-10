@@ -1,0 +1,75 @@
+@model AudioCms
+@{
+    ViewData["Title"] = "CreateAudioCms";
+}
+
+
+<div>
+
+</div>
+@if (Model.Id != 0)
+{
+
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+        </div>
+        <div class="col-12">
+            <div style="background: #fff;border-radius: 7px;margin-right: 5px;padding: 20px 30px ;margin-top: 70px;">
+                <form asp-action="CreateAudioCms" id="form" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="FileId" value="@(Model != null ? Model.Id: 0)" />
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" id="selectAudioFile">انتخاب فایل</button>
+                        <div id="fileAudio" style="padding-top:30px; text-align: center">
+                            @if (Model.Id != 0)
+                            {<vc:audio-component file-id="Model.FileId"></vc:audio-component>}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="@(Model.Id == 0 ? "افزودن" : "ویرایش")" id="formSubmit" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12">
+            @if (Model.Id != 0)
+            {
+                <div class="form-group ">
+                        <button class="audioText btn btn-outline-success" id="audiocopybtn">
+                            <i class="fa fa-copy" style="margin: 0 13px;font-size: 1.4em;"></i>
+                            <p style="display:inline-block;margin: 10px;" id="p1">[audio:{"id":@(Model.Id),"fileId":@(Model.FileId),"AudioCmsType":0}]</p>
+                        </button>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/Managment/CreatAudioCms.js"></script>
+}
+@section Styles {
+    <style>
+        .m-w-100 {
+            max-width: 100%;
+        }
+
+        .audioText {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #fafafa;
+            border-radius: 9px;
+            border-radius: 9px;
+        }
+    </style>
+}

@@ -1,0 +1,8 @@
+﻿@model Domain.Content
+    <div class="blog-box-layout1">
+        @*<div class="item-img">
+            <a href="single-blog.html"><img src="~/MainPage/img/blog/blog3.jpg" alt="blog"></a>
+        </div>*@
+        @if (Model.Text != null)
+        { Html.Raw(Model.Text); }
+    </div>

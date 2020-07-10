@@ -1,0 +1,17 @@
+﻿@model SelectFileCategoryViewModel
+
+<ul class="list-group" style="margin-right: 20px; margin-top: 10px;">
+    @foreach (var fc in Model.FileCategorys)
+    {
+        <li class="list-group-item" style="    margin-top: 4px;border-radius: 3px;">
+            <span><button class="btn @(fc.Id == Model.SelectedId ? "btn-success":"btn-outline-success") @(Model.SelectFileCategoryCls!= null ?Model.SelectFileCategoryCls : "" )" data-id="@fc.Id" id="sfc@(fc.Id)"><span>@(fc.Name)</span></button></span>
+            @if (fc.Children != null && fc.Children.Count > 0)
+            {
+                <span><button class="btn btn-outline-info showToggle" id="tbn@(fc.Id)" data-show="false" data-id="@(fc.Id)" id="sfc@(fc.Id)"><i class="fa fa-chevron-down" aria-hidden="true"></i></button></span>
+                <div class="showToggleDiv d-none" id="showdiv@(fc.Id)">
+                    <vc:select-file-category-childeren selected-id="@Model.SelectedId" file-categorys="@(fc.Children.ToList())"  select-file-category-cls="@($"{Model.SelectFileCategoryCls}changeCategory")"></vc:select-file-category-childeren>
+                </div>
+            }
+        </li>
+    }
+</ul>

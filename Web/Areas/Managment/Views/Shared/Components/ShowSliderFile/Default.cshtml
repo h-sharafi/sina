@@ -1,0 +1,20 @@
+﻿@model Domain.File
+
+
+    <div class="row sliderFileRow" >
+        <div class="col-md-4" style="margin : 2px auto">
+            <div style="margin:2px; border: 1px dashed; text-align: center; padding: 4px">
+                <img src="~/UplodedFiles/@(Model.FileName)" style="height:142px" />
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div style="margin:2px">
+                <span><button class="btn btn-outline-danger deleteSliderFileCls" data-id="@(Model.Id)"><span>حذف</span><span><i style="margin-right:3px" class="fa fa-trash"></i></span></button></span>
+                <br />
+                <div id="imageFileInfoId" class="alert alert-info my-3">
+                    <p style="margin: 20px 0;">نام : @(Model.Name)</p>
+
+                </div>
+            </div>
+        </div>
+    </div>

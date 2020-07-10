@@ -1,0 +1,63 @@
+﻿@model Tuple<List<File>, int, int, int>
+
+
+@if (Model.Item1.Count() == 0)
+{
+    <p class="alert alert-info">هیچ فایلی برای  نمایش در این دسته بندی وجود ندارد</p>
+}
+
+<div class="row">
+    @foreach (var file in Model.Item1)
+    {
+        <div class="card-deck col-md-4 col-lg-3">
+            <div class="card">
+                <img class="card-img-top" style="height: 11rem;" src="~/UplodedFiles/@(file.FileName)" alt="@(file.Name)">
+                <div class="card-body">
+                    <h5 class="card-title">@(file.Name)</h5>
+                    <p class="card-text">@(file.Description)</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">@(file.CreationTime)</small>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<hr />
+@* <div style="text-align:center">
+        <div>
+            <span><button class="btn btn-outline-info " id="preveBtnId">قبلی</button></span>
+            <span style="padding: 0 10px"></span>
+            <span><button class="btn btn-outline-info" id="nextBtnId">بعدی</button></span>
+        </div>
+    </div> *@
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        @if (Model.Item3 > 1)
+        {
+            @if (Model.Item2 > 1)
+            {
+                <li class="page-item">
+                    <button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="1">نخستین</button>
+                </li>
+            }
+            @if (Model.Item2 > 2)
+            {
+                <li class="page-item" data-pageIndex="@(Model.Item2-1)"> <button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item2-1)">@(Model.Item2 - 1)</button></li>
+            }
+
+            <li class="page-item" data-pageIndex="@(Model.Item2)"><button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item2)">@(Model.Item2)</button></li>
+            @if (Model.Item2 < Model.Item3 - 1)
+            {
+                <li class="page-item" data-pageIndex="@(Model.Item2 + 1)"><button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item2 + 1)">@(Model.Item2 + 1)</button></li>
+            }
+            @if (Model.Item2 < Model.Item3)
+            {
+                <li class="page-item" data-pageIndex="@(Model.Item3)"><button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item3)">پایانی</button></li>
+            }
+        }
+    </ul>
+</nav>

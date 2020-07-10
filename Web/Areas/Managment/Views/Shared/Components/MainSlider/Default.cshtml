@@ -1,0 +1,23 @@
+﻿@model Domain.Slider
+
+
+<div class="row">
+    <div class="col-md-12">
+        <p> اسلایدر اصلی</p>
+        <br />
+        <button class="btn btn-outline-info" id="addSliderFileId" style="margin-bottom: 10px">افزودن فایل</button>
+        @if (Model.Files != null)
+        {
+            @foreach (var file in Model.Files)
+            {
+                <vc:show-slider-file file-id="@(file.Id)"></vc:show-slider-file>
+            }
+        }
+        else
+        {
+            <p class="alert alert-info">هنوز تصویری برای اسلایدر اصلی انتخاب نکردیه اید</p>
+        }
+
+    </div>
+</div>
+

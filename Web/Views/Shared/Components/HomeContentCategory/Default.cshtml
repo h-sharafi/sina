@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Domain.ContentType>
+@if (Model.Any())
+{
+    <div class="widget">
+        <div class="section-heading heading-dark">
+            <h3 class="item-heading">دسته ها</h3>
+        </div>
+        <div class="widget-categories">
+            <ul>
+                @if (Model != null)
+                {
+                    foreach (var contentType in Model)
+                    {
+                        if (contentType.Conetnts.Where(c => c.IsActive).ToList().Any())
+                        {
+                            <li>
+                                <a href="#">
+                                    @contentType.Name
+                                    <span>(@(contentType.Conetnts.Where(c => c.IsActive).ToList().Count))</span>
+                                </a>
+                            </li>
+                        }
+                    }
+                }
+
+            </ul>
+        </div>
+    </div>
+}

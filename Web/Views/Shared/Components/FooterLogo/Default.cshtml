@@ -1,0 +1,12 @@
+﻿@model Domain.SiteSetting
+
+<div class="col-lg-4">
+    <div class="footer-box-layout1">
+        <div class="footer-logo">
+            @if (Model != null && Model?.FooterLogo != null && Model?.FooterLogo?.FileName != null && Model?.Title != null)
+            {
+                <a href="/"><img src="~/UplodedFiles/@(Model.FooterLogo.FileName)" alt="@(Model.Title)"></a>
+            }
+        </div>
+    </div>
+</div>

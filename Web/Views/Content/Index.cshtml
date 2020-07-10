@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Content>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+        <div class="row gutters-40">
+
+            @foreach (var content in Model)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="blog-box-layout9">
+                        <div class="item-img">
+                            <a href="/Content/@(content.Id)/@(content.Name.Replace(" ","-"))"><img src="~/UplodedFiles/@(content.ProfileImage.FileName)" alt="@(content.Name)"></a>
+                        </div>
+                        <div class="item-content">
+                            <ul class="entry-meta meta-color-dark">
+                                <li><i class="fas fa-tag"></i>@(content.ContentType.Name)</li>
+                                <li><i class="fas fa-calendar-alt"></i>@(content.CreationTime.ToPersianDateString())</li>
+                            </ul>
+                            <h3 class="item-title"><a href="/Content/@(content.Id)/@(content.Name.Replace(" ","-"))"> @(content.Title)</a></h3>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

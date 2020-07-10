@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="box-layout-child bg-white">
+    <!-- Slider Area Start Here -->
+    <vc:main-slider-show></vc:main-slider-show>
+    <!-- Slider Area End Here -->
+    <!-- Blog Area Start Here -->
+    <vc:main-content></vc:main-content>
+    <!-- Blog Area End Here -->
+    <!-- Blog Area Start Here -->
+    <section class="blog-wrap-layout2">
+        <div class="container">
+            <div class="row gutters-40">
+                <div class="col-xl-9 col-lg-8">
+                    <vc:home-page-content></vc:home-page-content>
+                </div>
+
+                <div class="col-xl-3 col-lg-4 sidebar-widget-area sidebar-break-md">
+                    <vc:home-page-social-network></vc:home-page-social-network>
+                    <vc:popular-posts></vc:popular-posts>
+                   <vc:home-content-category></vc:home-content-category>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

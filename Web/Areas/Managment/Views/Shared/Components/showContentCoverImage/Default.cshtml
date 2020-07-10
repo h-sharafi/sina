@@ -1,0 +1,30 @@
+@model File
+@{
+    var tagId = (string)ViewBag.tagId;
+}
+
+<div class="col-md-4">
+    <div id="@tagId" style="margin:2px; border: 1px dashed; text-align: center; padding: 4px">
+        @if (Model != null)
+        {
+            <img src="~/UplodedFiles/@(Model.FileName)" style="height:142px" />
+        }
+        else
+        {
+            <p class="alert alert-danger">هنوز تصویری برای این محتوا انتخاب نشده است</p>
+        }
+    </div>
+</div>
+<div class="col-md-8">
+    <div style="margin:2px">
+        <p class="btn btn-outline-info" id="@($"select{tagId}")">انتخاب  کاور</p>
+        @if (Model != null)
+        {
+            <div class="alert alert-info my-3">
+
+                <p style="margin: 20px 0;">نام : @(Model.Name)</p>
+
+            </div>
+        }
+    </div>
+</div>

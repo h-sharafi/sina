@@ -1,0 +1,15 @@
+﻿@using Microsoft.EntityFrameworkCore;
+@using Application.Service;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+    ViewBag.menu = "siteSetting";
+    ViewBag.sunMenu = "0";
+
+}
+@inject IFileService fileService
+@inject IFileCategoryService fileCategoryService
+<partial name="_FileWorkHeader" />
+<div class="container">
+    <partial name="_Alerts" />
+</div>

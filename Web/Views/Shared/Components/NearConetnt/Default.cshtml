@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Domain.Content>
+<div class="related-item">
+    <div class="section-heading-4 heading-dark">
+        <h3 class="item-heading">شما همچنین می توانید</h3>
+    </div>
+    <div class="row">
+        @foreach (var content in Model)
+        {
+            <div class="col-sm-4 col-12">
+                <div class="blog-box-layout1 text-left">
+                    <div class="item-img">
+                        <a href="/Content/@(content.Id)/@(content.Name.Replace(" ","-"))"><img src="~/UplodedFiles/@(content.CoverImage.FileName)" alt="@(content.Name)"></a>
+                    </div>
+                    <div class="item-content">
+                        <ul class="entry-meta meta-color-dark">
+                            <li><i class="fas fa-tag"></i>@(content.ContentType.Name)</li>
+                            <li><i class="fas fa-calendar-alt"></i>@(content.CreationTime.ToPersianDateString())</li>
+                        </ul>
+                        <h5 class="item-title">
+                            <a href="/Content/@(content.Id)/@(content.Name.Replace(" ","-"))">
+                               @(content.Title)
+                            </a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

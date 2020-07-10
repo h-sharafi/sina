@@ -1,0 +1,6 @@
+﻿@model Tuple<SiteSetting, string>
+@if (Model != null && Model.Item1 != null &&  Model.Item1.FavIcon != null)
+{
+    <link rel="shortcut icon" type="image/x-icon" href="~/UplodedFiles/@(Model.Item1.FavIcon.FileName)">
+    <title>@(Model.Item1.Title)| @(Model.Item2 != null ? Model.Item2 : "خانه")</title>
+}

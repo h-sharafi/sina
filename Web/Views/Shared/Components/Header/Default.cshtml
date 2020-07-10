@@ -1,0 +1,55 @@
+﻿@model Tuple<List<SocialNetwork>, SiteSetting>
+<header class="has-mobile-menu">
+    <div id="header-topbar" class="pt--14 pb--14 bg--light border-bootom border-color-accent1">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-3 d-flex justify-content-start">
+                </div>
+                <div class="col-lg-9 d-flex justify-content-end">
+                    <div class="header-action-items">
+                        <ul>
+                            @foreach (var socialNetwork in Model.Item1)
+                            {
+                                <li class="item-social-layout1">
+                                    <a href="@(socialNetwork.Address)"><i class="@(socialNetwork.FaClass)"></i></a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header-middlebar" class="box-layout-child bg--light border-bootom border-color-accent2">
+        <div class="pt--25 pb--25">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-4">
+                        <div class="logo-area">
+                            <a href="/" class="temp-logo" id="temp-logo">
+                            @if(Model.Item2?.SiteLogo != null){    <img src="/UplodedFiles/@(Model.Item2.SiteLogo!=null ? Model.Item2.SiteLogo.FileName: "noImage.jpg")" alt="logo" class="img-fluid">}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-center">
+
+                    </div>
+                    <div class="col-lg-4 d-flex justify-content-end">
+                        <div class="header-action-items">
+                            <ul>
+                                <li class="header-search-box divider-style-border">
+                                    <a href="#header-search" title="جستجو">
+                                        <i class="flaticon-magnifying-glass"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="rt-sticky-placeholder"></div>
+    <vc:site-navbar></vc:site-navbar>
+</header>

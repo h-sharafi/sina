@@ -1,0 +1,18 @@
+﻿@model List<FileCategory>
+<ul class="list-group"  style="margin-right: 20px; margin-top: 10px;">
+    @foreach (var fc in Model){
+    <li class="list-group-item" style="    margin-top: 4px;border-radius: 3px;" id="fcLi@(fc.Id)">
+        <span>@(fc.Name)</span>
+        <span style="margin-right: 20px; margin-top: 10px;"><btton class="btn btn-outline-success addfc" data-id="@fc.Id"><i class="fa fa-plus" aria-hidden="true"></i></btton></span>
+        @if (fc.Children != null && fc.Children.Count > 0)
+        {
+            <vc:file-category filecategorys="@(fc.Children.ToList())"></vc:file-category>
+        }
+        else
+        {
+            <span><btton class=" btn btn-outline-danger deletefc" data-id="@fc.Id"><i class="fa fa-trash-o" aria-hidden="true"></i></btton></span>      
+        }
+    </li>}
+
+
+</ul>

@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Domain.SocialNetwork>
+@if (Model.Any())
+{
+    <div class="widget">
+        <div class="section-heading heading-dark">
+            <h3 class="item-heading">اشتراک و دنبال کردن</h3>
+        </div>
+        <div class="widget-follow-us">
+            <ul>
+                @foreach (var sociaNetwork in Model)
+                {
+                    <li class="single-item"><a href="@(sociaNetwork.Address)"><i class="@(sociaNetwork.FaClass)"></i></a></li>
+                }
+
+            </ul>
+        </div>
+    </div>
+}
+
+@*<li class="single-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-github-alt"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-kickstarter-k"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-behance"></i></a></li>
+    <li class="single-item"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>*@
+

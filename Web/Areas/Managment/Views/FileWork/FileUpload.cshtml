@@ -1,0 +1,85 @@
+﻿@model Domain.ViewModels.FileViewModel
+
+@{
+    ViewData["Title"] = "FileUpload";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_FileWorkHeader" />
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p class="alert alert-warning">برای فایل اپلودی خود یک دسته بندی انتخاب کنید</p>
+        </div>
+    </div>
+<audio id='audio'></audio>
+
+    <div class="row">
+        <div class="col-md-5" style="margin: 39px auto;margin-right: 0px;padding: 20px 30px;background: #fff;border-radius: 7px;">
+            <vc:select-file-category selected-id="@(Model != null && Model.Id != 0 ? Model.Id: (short)0)" select-file-category-cls="selectFileCategory"></vc:select-file-category>
+        </div>
+        <div class="col-md-7" style="margin: 39px auto; margin-left: 0px">
+            <div style="background: #fff;border-radius: 7px;margin-right: 5px;padding: 20px 30px">
+                <form asp-action="FileUpload" id="form" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="FileCategoryId" value="@(Model != null ? Model.Id: 0)" />
+                    <input type="hidden" asp-for="Duration" value="0" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FormFile" class="control-label"></label>
+                        <div class="file-upload-wrapper">
+                            <input asp-for="FormFile" class="file-upload" />
+                        </div>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="افزودن" id="formSubmit" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-12">
+            <a asp-action="Index" style="margin:30px auto;margin-bottom: 40px" class="btn btn-outline-info">برگشت </a>
+
+        </div>
+    </div>
+   
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/Managment/file.js"></script>
+    <script>
+        $('.file-upload').file_upload();
+    </script>
+}
+@section Styles {
+    <style>
+        .file-field.big .file-path-wrapper {
+            height: 3.2rem;
+        }
+
+            .file-field.big .file-path-wrapper .file-path {
+                height: 3rem;
+            }
+    </style>
+}

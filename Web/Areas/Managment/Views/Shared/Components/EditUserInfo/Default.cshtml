@@ -1,0 +1,38 @@
+﻿@model AppUser
+
+<div class="form-group">
+    <div style="background: #E3E3E3 ; padding: 20px">
+         <button class="btn btn-outline-info" id="selectUSerbtnId"style="margin: 5px">انتخاب کاربر</button>
+        @if (Model != null)
+        {
+           
+            <div class="row">
+                <div class="col-md-12" style="margin: 20px 3px">
+                    <spam>نام</spam> : <span class="alert alert-info" style="padding : 5px">@Model.DisplayName</span>
+                </div>
+                <div class="col-md-12" style="margin: 20px 3px">
+                    <spam>ایمیل</spam> : <span class="alert alert-info" style="padding : 5px">@Model.Email</span>
+                </div>
+                <div class="col-md-12" style="margin: 20px 3px">
+                    <spam>تاریخ عضویت</spam>:<span class="alert alert-info" style="padding : 5px">
+                        @if (Model.CreationDateTime > DateTime.MinValue)
+                        {
+                            var date = Model.CreationDateTime.ToString();
+                            <span>@date</span>
+                        }
+                        else
+                        {
+                            <span>بدون تاریخ عضویت</span>
+                        }
+                    </span>
+
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <p class="alert alert-danger">یک کاربر اینتخاب کنید</p>
+        }
+    </div>
+</div>

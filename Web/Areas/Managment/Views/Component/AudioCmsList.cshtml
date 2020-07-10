@@ -1,0 +1,44 @@
+@model List<AudioCms>
+
+@{ ViewData["Title"] = "CreateAudioCmsList"; var index = 0; }
+
+<div style="padding: 11px 72px;">
+    <a asp-action="CreateAudioCms" class="btn btn-outline-info" >ایجاد سی ام اس جدید</a>
+</div>
+<div class="container" style="padding-top: 40px">
+    @if (Model.Count > 0)
+    {
+        <table class="table table-bordered text-center bg-white" style="vertical-align: middle">
+            <thead>
+                <tr>
+                    <th scope="col" style="width:10%">ردیف</th>
+                    <th scope="col">نام</th>
+                    <th scope="col" style="width:40%">صدا</th>
+                    <th scope="col" style="width:30%">عملیات</th>
+
+                </tr>
+            </thead>
+            <tbody style="vertical-align: middle">
+                @foreach (var audio in Model)
+                {
+                    <tr id="listTr@(audio.Id)">
+                        <th>@(++index)</th>
+                        <td>@(audio.Name)</td>
+                        <td><vc:audio-component file-id="@(audio.FileId)"></vc:audio-component></td>
+                        <td>
+                            <p style="display:inline-block;margin: 10px;display:none" id="p@(audio.Id)">[audio:{"id":@(audio.Id),"fileId":@(audio.FileId),"AudioCmsType":0}]</p>
+                            <a class="btn btn-outline-success" asp-action="CreateAudioCms" asp-route-id="@(audio.Id)"><span>ویرایش</span><span><i style="margin-right:3px" class="fa fa-edit"></i></span></a>
+                            <button class="btn btn-outline-danger deleteAudio" data-id="@(audio.Id)"><span>حذف</span><span><i style="margin-right:3px" class="fa fa-trash"></i></span></button>
+                            <button class="btn btn-outline-info copyAudio" data-id="@(audio.Id)"><span>کپی</span><span><i style="margin-right:3px" class="fa fa-copy"></i></span></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/Managment/CreatAudioCms.js"></script>
+}

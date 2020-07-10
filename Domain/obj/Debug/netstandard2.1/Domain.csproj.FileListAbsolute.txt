@@ -1,0 +1,9 @@
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/bin/Debug/netstandard2.1/Domain.deps.json
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/bin/Debug/netstandard2.1/Domain.dll
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/bin/Debug/netstandard2.1/Domain.pdb
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/obj/Debug/netstandard2.1/Domain.csprojAssemblyReference.cache
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/obj/Debug/netstandard2.1/Domain.AssemblyInfoInputs.cache
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/obj/Debug/netstandard2.1/Domain.AssemblyInfo.cs
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/obj/Debug/netstandard2.1/Domain.csproj.CoreCompileInputs.cache
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/obj/Debug/netstandard2.1/Domain.dll
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Domain/obj/Debug/netstandard2.1/Domain.pdb

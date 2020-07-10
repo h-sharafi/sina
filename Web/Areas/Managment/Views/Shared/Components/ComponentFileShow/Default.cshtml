@@ -1,0 +1,75 @@
+@model Tuple<List<File>, int, int, int, string, short?>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0px auto;margin-right: 0px;padding: 0px 30px;border-radius: 7px;">
+            <vc:select-file-category selected-id="@(Model.Item6 !=null ? Model.Item6.Value  : (short)0)" select-file-category-cls="@($"{Model.Item5}changeCategory")"></vc:select-file-category>
+        </div>
+        <div class="col-md-8" id="fileShowId" style="margin: 0px auto; margin-left: 0px">
+            <div class="row">
+                @if (Model.Item1.Count() == 0)
+                {
+                    <div class="col-12">
+                        <p class="alert alert-info">هیچ فایلی برای  نمایش در این دسته بندی وجود ندارد</p>
+                    </div>
+                }
+                @foreach (var file in Model.Item1)
+                {
+                    <div class="card-deck col-md-4 col-lg-3">
+                        <div class="card">
+                            @if (file.FileType.Contains("image"))
+                            {
+                                <img class="card-img-top" style="height: 11rem;" src="~/UplodedFiles/@(file.FileName)" alt="@(file.Name)">
+                            }
+                            else
+                            {
+                                <img class="card-img-top" style="height: 11rem;" src="~/UplodedFiles/@(file.FileType.Split('/')[0]).png" alt="@(file.Name)">
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@(file.Name)</h5>
+                                <p class="card-text">@(file.Description)</p>
+                            </div>
+                            <div class="card-footer">
+                                <buton class="btn btn-outline-info btn-block @(Model.Item5 != null ? Model.Item5  : "")" data-id="@file.Id">انتخاب</buton>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <hr />
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    @if (Model.Item3 > 1)
+                    {
+                        @if (Model.Item2 > 1)
+                        {
+                            <li class="page-item">
+                                <button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="1">نخستین</button>
+                            </li>
+                        }
+                        @if (Model.Item2 > 2)
+                        {
+                            <li class="page-item" data-pageIndex="@(Model.Item2-1)"> <button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item2-1)">@(Model.Item2 - 1)</button></li>
+                        }
+
+                        <li class="page-item" data-pageIndex="@(Model.Item2)"><button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item2)">@(Model.Item2)</button></li>
+                        @if (Model.Item2 < Model.Item3 - 1)
+                        {
+                            <li class="page-item" data-pageIndex="@(Model.Item2 + 1)"><button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item2 + 1)">@(Model.Item2 + 1)</button></li>
+                        }
+                        @if (Model.Item2 < Model.Item3)
+                        {
+                            <li class="page-item" data-pageIndex="@(Model.Item3)"><button class="page-link pageIndexClick btn btn-outline-info" style="margin: 0 2px" data-pageIndex="@(Model.Item3)">پایانی</button></li>
+                        }
+                    }
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>

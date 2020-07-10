@@ -1,0 +1,75 @@
+@using Microsoft.EntityFrameworkCore;
+@using Application.Service;
+@using System.Linq;
+
+@inject IFileService fileService
+@inject IFileCategoryService fileCategoryService
+@inject IUploadInfoService uploadInfoService
+@{
+    var totalUploadModel = uploadInfoService.GetAll().FirstOrDefault();
+    var totalUploadCount = totalUploadModel != null ? totalUploadModel.TotalUploads : 0;
+}
+    <div class="container">
+
+        <div class="row" style="padding: 40px 0;">
+            <div class="col-md-3 col-sm-6 col-12 thumbnail">
+                <a href="~/Managment/FileWork/Files">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info"><i class="fa fa-file" aria-hidden="true"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">فایل ها</span>
+                            <span class="info-box-number">@(await fileService.GetAll().CountAsync())</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </a>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-12 thumbnail">
+                <a href="~/Managment/FileWork/FileCategory">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-success"><i class="fa fa-list-alt" aria-hidden="true"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">دسته بندی ها</span>
+                            <span class="info-box-number">@(await fileCategoryService.GetAll().CountAsync())</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </a>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-12">
+                   <a href="~/Managment/FileWork/fileUpload">
+                <div class="info-box">
+                    <span class="info-box-icon bg-warning"><i class="fa fa-files-o"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">آپلودها</span>
+                        <span class="info-box-number">@totalUploadCount</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                    </a>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-danger"><i class="fa fa-star-o"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">لایک‌ها</span>
+                        <span class="info-box-number">۹۳,۱۳۹</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+
+    </div>

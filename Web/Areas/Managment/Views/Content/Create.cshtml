@@ -1,0 +1,101 @@
+﻿@model Domain.Content
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+}
+
+
+<hr />
+<div class="row" style="padding: 0 4rem;">
+    <div class="col-md-4">
+        <div id="contentType">
+            <vc:content-type selected-content-type=@(Model != null ? Model.ContentTypeId: (short)0)></vc:content-type>
+        </div>
+    </div>
+    <div class="col-md-8 create-Content-form">
+        <form asp-action="Create" id="createContentFormId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" value="@(Model != null ? Model.Id: 0)" />
+            <input type="hidden" asp-for="ContentTypeId" value="@(Model != null ? Model.ContentTypeId: 0)" />
+            <input type="hidden" asp-for="CoverImageId" value="@(Model != null ? Model.CoverImageId: 0)" />
+            <input type="hidden" asp-for="ProfileImageId" value="@(Model != null ? Model.ProfileImageId: 0)" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <textarea asp-for="Text" class="form-control" id="description"></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Keywords" class="control-label"></label>
+                <input asp-for="Keywords" class="form-control" />
+                <span asp-validation-for="Keywords" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="background: #e3e3e3;  padding: 10px;">
+                <div class="row" style="border: 0px dashed" id="coverImagePlcId">
+                    <vc:show-content-cover-image file="@(Model?.CoverImage)" file-id="0" tag-id="coverImagePlcId"></vc:show-content-cover-image>
+                </div>
+            </div>
+            <div class="form-group" style="background: #e3e3e3;  padding: 10px;">
+                <label asp-for="ProfileImageId" class="control-label"></label>
+                <div class="row" style="border: 0px dashed" id="profileImagePlcId">
+                    <vc:show-content-cover-image file="@(Model?.CoverImage)" file-id="0" tag-id="profileImagePlcId"></vc:show-content-cover-image>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@(Model.Id == 0 ? "ایجاد": "ویرایش")" id="formSumbitId" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+@section scripts{
+
+    <script src="//cdn.ckeditor.com/4.14.0/full/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace('description', {
+            customConfig: '/config.js'
+        });
+
+    </script>
+    <script src="~/Scripts//Managment/createContent.js"></script>
+
+}
+
+@section styles {
+    <style>
+        .create-Content-form {
+            margin: 0 auto !important;
+            background: #fcfcfc !important;
+            border-radius: 9px !important;
+            padding: 22px 32px;
+        }
+
+        .m-w-100 {
+            max-width: 100%;
+        }
+         .m-w-60 {
+            max-width: 60%;
+        }
+    </style>
+
+}

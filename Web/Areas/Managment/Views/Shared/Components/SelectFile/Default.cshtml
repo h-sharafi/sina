@@ -1,0 +1,19 @@
+@model pagginViewModel
+@{
+    ViewData["Title"] = "Files";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_FileWorkHeader" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" style="margin: 0px auto;margin-right: 0px;padding: 0px 30px;border-radius: 7px;">
+            <vc:select-file-category selected-id="0"></vc:select-file-category>
+        </div>
+        <div class="col-md-8" id="fileShowId" style="margin: 0px auto; margin-left: 0px">
+           
+        </div>
+    </div>
+</div>
+

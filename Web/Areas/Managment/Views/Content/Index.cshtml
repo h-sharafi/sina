@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Domain.Content>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Managment/Views/Shared/_Layout.cshtml";
+    int index = 0;
+}
+
+<div class="container" style="padding-top: 3rem">
+    <partial name="_Alerts" />
+
+    <p>
+        <a asp-action="Create" class="btn btn-outline-info">ایجاد محتوای تازه</a>
+    </p>
+    @if (true)
+    {
+        <table class="table  table-striped" style="margin: 0 auto;margin-top: 3rem;">
+            <thead>
+                <tr>
+                    <th>
+                        ردیف
+                    </th>
+                         <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreationTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalSeen)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    index++;
+                    <tr id="tr@(item.Id)">
+                        <td>
+                            @index
+                        </td>
+                           <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td id="isActive@(item.Id)">
+                            <button data-id="@item.Id" type="button" class="btn btn-outline-@(item.IsActive ? "success":"danger") isAciveCls"> <i data-id="@item.Id" class="fa fa-@(item.IsActive ? "check":"times")"></i></button>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreationTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalSeen)
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-info" asp-action="Create" asp-route-id="@item.Id">ویرایش</a>
+                            <button class="btn btn-outline-danger deleteConetent" data-id="@(item.Id)" )">حذف</button>
+                            <a class="btn btn-outline-warning" asp-action="Details" asp-route-id="@item.Id">جزئیات</a>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>هنوز محتوایی ثبت نشده است</p>
+    }
+</div>
+
+@section scripts {
+    <script>
+          $(document).on('click','.deleteConetent' ,  function(e) {
+          let id =  $(this).data('id');
+          Swal.fire({
+            title: 'آیا مطمئن هستین',
+            text: "فرایند حذف قابل برگشت نیست",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'بله ، حذف کن',
+            cancelButtonText: 'برگشت',
+            }).then((result) => {
+            if (result.value) {
+             
+                $.post("/Managment/Content/Delete", {"id" : id},function (data, textStatus, jqXHR) {
+                    if(data.result){
+                        $('#tr' + id).addClass('d-none')
+                           Swal.fire(
+                            'Deleted!',
+                            'عملیات حذف با موفقیت انجام شد',
+                            'success'
+                            )
+                    }else{
+                         Swal.fire(
+                            'Deleted!',
+                            'یک خطا در هنگام حذف به وجود آمد',
+                            'error'
+                            )
+                    }
+                      },"json"
+            );
+            }
+            })
+           
+
+
+          });
+    </script>
+    <script>
+            $(document).on('click','.isAciveCls' ,  function(e) {
+          let id =  $(this).data('id');
+           $.post("/Managment/Content/ChangeContentActicve", {"id" : id},function (data, textStatus, jqXHR) {
+                    if(data.result){
+                        $('#isActive' + id).html('<button data-id="'+ id + '" type="button" class="btn btn-outline-success isAciveCls"> <i data-id="'+ id + '" class="fa fa-check"></i></button>')
+                    }else{
+                           $('#isActive' + id).html('<button data-id="'+ id + '" type="button" class="btn btn-outline-danger isAciveCls"> <i data-id="'+ id + '" class="fa fa-times"></i></button>');
+                    }
+                      },"json"
+            );
+        })
+    </script>
+}

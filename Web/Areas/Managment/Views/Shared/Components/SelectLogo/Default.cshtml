@@ -1,0 +1,30 @@
+@model File
+
+@{
+    string typeId = (string)ViewBag.typeId;
+}
+
+<div class="col-md-4">
+    <div  style="margin:2px; border: 1px dashed; text-align: center; padding: 4px">
+        @if (Model != null)
+        {
+            <img src="~/UplodedFiles/@(Model.FileName)" style="height:142px" />
+        }
+        else
+        {
+            <p class="alert alert-danger">یک تصویر به عنوان لوگو انتخاب کنید</p>
+        }
+    </div>
+</div>
+<div class="col-md-8">
+    <div style="margin:2px">
+        <button class="btn btn-outline-warning " id="selectCoverImage" data-type="@typeId">انتخاب  کاور</button>
+        @if (Model != null)
+        {
+            <div id="imageFileInfoId" class="alert alert-info my-3" style="background:#0cf3ffba!important;border-color:#0cf3ffba!important; color: #000 ">
+                <p style="margin: 20px 0;">نام : @(Model.Name)</p>
+
+            </div>
+        }
+    </div>
+</div>

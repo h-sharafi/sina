@@ -1,0 +1,13 @@
+@model Tuple<List<ContentType>, short>
+
+
+<ul class="list-group">
+    @foreach (var sideBar in Model.Item1)
+    {
+        <li class="list-group-item list-group-item-light" style="margin-bottom: 2px;">
+            <span><button type="button" class="btn @(sideBar.Id == Model.Item2 ?"btn-info" : "btn-outline-info") selectContentType contentTypeSideBar-btn" data-id="@sideBar.Id">@sideBar.Name</button></span>
+            <span id="changeContentTypeActiveId@(sideBar.Id)"><button class="btn btn-outline-@(sideBar.IsActive? "success":"danger") changeContentTypeActive" data-id="@sideBar.Id">@Html.Raw(sideBar.IsActive ? "<i class='fa fa-eye' aria-hidden='true'></i>" : "<i class='fa fa-eye-slash' aria-hidden='true'></i>")</button></span>
+        </li>
+}
+</ul>
+<button type="button" class="btn btn-outline-primary d-block" style="margin: 10px auto;display: block;min-width: 100%;" id="addConetntType">افزودن نوع محتوا</button>

@@ -1,0 +1,77 @@
+﻿@model Domain.Team
+
+@{
+    ViewData["Title"] = "EditTeam";
+}
+
+<div class="container">
+    <div class="row" style="padding: 40px 30px;">
+        <div class="col-md-6" style="margin: 0 auto">
+            <form asp-action="EditTeam">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProfileImageId" />
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="TeamAppUserId" />
+                <div class="form-group">
+                    <label asp-for="BreifKnowledge" class="control-label"></label>
+                    <input asp-for="BreifKnowledge" class="form-control" />
+                    <span asp-validation-for="BreifKnowledge" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="background: #e3e3e3;  padding: 10px;">
+                    <label asp-for="ProfileImageId" class="control-label"></label>
+                    <div class="row" style="border: 0px dashed" id="coverImagePlcId">
+                        <vc:show-content-cover-image file="@(Model.ProfileImage)" file-id="0"></vc:show-content-cover-image>
+                    </div>
+                </div>
+                <div id="userInfoId">
+                    <vc:edit-user-info user-id="@(Model.TeamAppUserId)"></vc:edit-user-info>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="formSubmitId" value="@(Model.Id == 0 ? "ساخت" : "ویرایش")" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <div style="margin-top: 50px">
+                <a asp-action="TeamList" class="btn btn-outline-info">بازگشت به لیست</a>
+            </div>
+        </div>
+        <div class="col-md-6" style="margin: 0 auto" id="socialPlaceId">
+            <vc:social-network team-id="@(Model.Id)"></vc:social-network>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Scripts/Managment/EditTeamCms.js"></script>
+    <script src="~/Scripts/Managment/socialNetwork.js"></script>
+}
+@section Styles{
+
+    <style>
+        .m-w-100 {
+            max-width: 100%;
+        }
+
+        .m-w-60 {
+            max-width: 60%;
+        }
+
+        form {
+            padding: 22px;
+            background: #fffbfb;
+            border-radius: 12px;
+        }
+
+        .ver-middle {
+            vertical-align: middle;
+        }
+    </style>
+
+
+}
+

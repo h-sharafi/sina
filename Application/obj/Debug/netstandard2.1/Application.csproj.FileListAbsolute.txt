@@ -1,0 +1,14 @@
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Application.deps.json
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Application.dll
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Application.pdb
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Domain.dll
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Persistence.dll
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Persistence.pdb
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/bin/Debug/netstandard2.1/Domain.pdb
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.csprojAssemblyReference.cache
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.AssemblyInfoInputs.cache
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.AssemblyInfo.cs
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.csproj.CoreCompileInputs.cache
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.csproj.CopyComplete
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.dll
+/media/sharafi/EE065EF8065EC16F/Sina-second/Sina-master/Application/obj/Debug/netstandard2.1/Application.pdb
